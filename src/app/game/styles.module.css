@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.title {
+  font-size: 5rem;
+  color: white;
+}
+
+.question {
+  font-size: 2rem;
+  color: white;
+}
+
+.score {
+  font-size: 2rem;
+  color: white;
+}

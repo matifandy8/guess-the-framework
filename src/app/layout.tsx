@@ -4,11 +4,9 @@ import "./globals.css";
 export const metadata = {
   title: "Guess the framework",
   description: "Guess the framework that you are using",
-
   icons: {
     icon: "../public/logo.webp",
   },
-
   openGraph: {
     title: "Guess the framework",
     description: "Guess the framework that you are using",
@@ -33,7 +31,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={styles.body}>{children}</body>
+      <body className={styles.body}>
+        {children}
+        <footer>
+          <p>Created by: Matias fandiño</p>
+          <a
+            href="https://github.com/matifandy8"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="footer__link"
+          >
+            Github
+          </a>
+        </footer>
+      </body>
     </html>
   );
 }
