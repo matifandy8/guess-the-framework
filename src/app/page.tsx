@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import "./globals.css";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
       <div className={styles.presentation}>
         <h1 className={styles.title}>Guess the framework</h1>
         <p className={styles.description}>
-          Guess the framework that you are using.
+          Game where you have to guess the name of the framework
         </p>
         <Link href="/game" className={styles.button}>
           Start the game

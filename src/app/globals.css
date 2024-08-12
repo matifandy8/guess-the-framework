@@ -1,9 +1,14 @@
+@font-face {
+  font-family: "GolosText";
+  src: url("../../public/GolosText-SemiBold.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-golos: "GolosText";
   --color-orange: #ff7225;
 }
 
@@ -40,56 +45,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: #000000;
+  background-image: url("../../public/stars.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-clip: border-box;
   opacity: 0.9;
-  background-image: linear-gradient(
-      30deg,
-      #ff722500 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #ff722524 87.5%,
-      #ff722512
-    ),
-    linear-gradient(
-      150deg,
-      #ff72253b 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #ff722526 87.5%,
-      #ff72251f
-    ),
-    linear-gradient(
-      30deg,
-      #ff72251a 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #ff722529 87.5%,
-      #ff722533
-    ),
-    linear-gradient(
-      150deg,
-      #ff722500 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #ff722517 87.5%,
-      #ff72253d
-    ),
-    linear-gradient(
-      60deg,
-      #ff72253d 25%,
-      transparent 25.5%,
-      transparent 75%,
-      #ff722521 75%,
-      #ff722514
-    ),
-    linear-gradient(
-      60deg,
-      #ff722514 25%,
-      transparent 25.5%,
-      transparent 75%,
-      #ff722503 75%,
-      #ff72250f
-    );
-
   background-size: 200% 200%;
   animation: animateBackground 10s linear infinite,
     animateOpacity 5s ease-in-out infinite;
