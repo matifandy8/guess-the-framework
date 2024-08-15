@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className={styles.body}>
         {children}
         <footer>
-          <p>Created by: Matias fandiño</p>
+          <p>Created by: Matias fandiño </p>
           <a
             href="https://github.com/matifandy8"
             target="_blank"

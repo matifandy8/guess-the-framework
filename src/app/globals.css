@@ -60,9 +60,24 @@ footer {
   font-family: var(--font-golos);
   font-size: 1.2rem;
   z-index: 1;
-}
-.footer__link {
-}
-.footer__link:hover {
-  color: var(--color-orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+      color: var(--color-orange);
+    }
+  }
 }

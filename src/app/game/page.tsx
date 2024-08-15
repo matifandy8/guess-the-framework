@@ -32,11 +32,6 @@ export default function Game() {
       <span className={styles.score}>
         {score} Question corrects out of {questions.length}
       </span>
-      <p className={styles.question}>
-        {questions[currentIndex].type === "framework"
-          ? "Framework"
-          : "CSS Library"}
-      </p>
       <p className={styles.question}>{questions[currentIndex].question}</p>
       <div className={styles.options}>
         {questions[currentIndex].options.map((option) => (
