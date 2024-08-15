@@ -6,6 +6,6 @@ type Question = {
   answer: string;
 };
 
-type GameData = {
+export type GameData = {
   questions: Question[];
 };

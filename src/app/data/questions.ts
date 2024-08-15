@@ -1,3 +1,5 @@
+import { GameData } from "../types/questions";
+
 export const gameData: GameData = {
   questions: [
     {
