@@ -11,6 +11,12 @@
   color: white;
 }
 
+.timer {
+  font-size: 2rem;
+  color: white;
+  margin-top: 20px;
+}
+
 .score {
   font-size: 2rem;
   color: white;
@@ -46,6 +52,11 @@
   background-color: #cc591c;
 }
 
+.option[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 .nextButton {
   margin-top: 20px;
   background-color: green;
@@ -56,6 +67,50 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.nextButton:hover {
+  background-color: darkgreen;
+}
+
+.nextButton:active {
+  background-color: darkgreen;
+}
+
+.tryAgainButton {
+  margin-top: 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.correct {
+  background-color: green;
+  animation: correct 0.3s ease;
+}
+
+@keyframes correct {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.correct[disabled] {
+  background-color: green;
+  cursor: not-allowed;
+}
+.wrong {
+  border: 1px solid red;
 }
 
 @media screen and (max-width: 768px) {
