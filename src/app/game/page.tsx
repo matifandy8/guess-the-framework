@@ -1,66 +1,68 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { gameData } from "../data/questions";
 import styles from "./styles.module.css";
 
 export default function Game() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [answered, setAnswered] = useState(false);
   const [timer, setTimer] = useState(10);
+  const [message, setMessage] = useState("");
+
+  const questions = gameData.questions;
+  const lastQuestion = currentIndex === questions.length - 1;
+  const answered = message !== "";
 
   useEffect(() => {
     if (timer > 0 && !answered) {
-      const interval = setInterval(() => {
-        setTimer((prev) => prev - 1);
-      }, 1000);
+      const interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
       return () => clearInterval(interval);
     } else if (timer === 0 && !answered) {
-      setAnswered(true);
+      setMessage("Time's up!");
     }
   }, [timer, answered]);
 
-  const questions = gameData.questions;
+  const handleGuess = useCallback(
+    (option: string) => {
+      setTimer(0);
+      const isCorrect = option === questions[currentIndex].answer;
+      setMessage(isCorrect ? "Correct answer!" : "Wrong answer!");
+      if (isCorrect) setScore((prev) => prev + 1);
+    },
+    [currentIndex, questions]
+  );
 
-  const lastQuestion = currentIndex === questions.length - 1;
-
-  const handleGuess = (option: string) => {
-    if (option === questions[currentIndex].answer) {
-      setScore(score + 1);
-      setAnswered(true);
-    }
-  };
-
-  const handleNext = () => {
-    setCurrentIndex(currentIndex + 1);
-    setAnswered(false);
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => prev + 1);
+    setMessage("");
     setTimer(10);
-  };
+  }, []);
 
-  const handleResetGame = () => {
+  const handleResetGame = useCallback(() => {
     setCurrentIndex(0);
     setScore(0);
-    setAnswered(false);
+    setMessage("");
     setTimer(10);
-  };
+  }, []);
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Game</h1>
-      <span className={styles.timer}>Time: {timer}</span>
-      <span className={styles.score}>
-        {score} Question corrects out of {questions.length}
-      </span>
+      <div className={styles.info}>
+        <span className={styles.timer}>Time: 0:{timer} Seconds</span>
+        <span className={styles.score}>
+          Score: {score} / {questions.length}
+        </span>
+      </div>
       <p className={styles.question}>{questions[currentIndex].question}</p>
       <div className={styles.options}>
         {questions[currentIndex].options.map((option) => (
           <button
             key={option}
             className={`${styles.option} ${
-              answered
-                ? option === questions[currentIndex].answer
-                  ? styles.correct
-                  : styles.wrong
+              answered && option === questions[currentIndex].answer
+                ? styles.correct
+                : answered
+                ? styles.wrong
                 : ""
             }`}
             onClick={() => handleGuess(option)}
@@ -70,13 +72,24 @@ export default function Game() {
           </button>
         ))}
       </div>
-      {answered && (
-        <button
-          className={lastQuestion ? styles.tryagainButton : styles.nextButton}
-          onClick={lastQuestion ? handleResetGame : handleNext}
-        >
-          {lastQuestion ? "Try Again" : "Next"}
-        </button>
+      <div className={styles.buttonContainer}>
+        {answered && <p className={styles.message}>{message}</p>}
+        {answered && !lastQuestion && (
+          <button className={styles.nextButton} onClick={handleNext}>
+            Next
+          </button>
+        )}
+      </div>
+      {lastQuestion && (
+        <dialog className={styles.dialog} open>
+          <h1>Game Over</h1>
+          <p>
+            Your final score is {score} / {questions.length}
+          </p>
+          <button onClick={handleResetGame} className={styles.tryAgainButton}>
+            Play Again
+          </button>
+        </dialog>
       )}
     </div>
   );

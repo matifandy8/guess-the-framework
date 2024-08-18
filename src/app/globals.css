@@ -10,6 +10,11 @@
   --border-radius: 12px;
   --font-golos: "GolosText";
   --color-orange: #ff7225;
+  --color-green: #4caf50;
+  --color-red: #f44336;
+  --text-white: #ffffff;
+  --transition-duration: 0.3s;
+  --border-radius: 5px;
 }
 
 * {

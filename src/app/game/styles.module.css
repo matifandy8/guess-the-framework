@@ -4,44 +4,60 @@
   justify-content: center;
   align-items: center;
   min-height: 90vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .title {
-  font-size: 5rem;
-  color: white;
+  font-size: 4rem;
+  color: var(--text-white);
+  margin: 0;
 }
 
-.timer {
-  font-size: 2rem;
-  color: white;
-  margin-top: 20px;
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 
+.timer,
 .score {
+  font-size: 1.4rem;
+  color: var(--text-white);
+  margin: 0;
+}
+.question {
   font-size: 2rem;
-  color: white;
-  margin-top: 20px;
+  margin-top: 40px;
+  color: var(--text-white);
+  border: 3px solid var(--color-orange);
+  padding: 30px 40px;
+  border-radius: var(--border-radius);
+  max-width: 800px;
 }
 
-.question {
-  margin-top: 20px;
-  font-size: 2rem;
-  color: white;
-}
 .options {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
 }
+
 .option {
   background-color: var(--color-orange);
-  color: white;
+  color: var(--text-white);
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) ease;
+  flex: 1;
+  max-width: calc(50% - 10px);
+  box-sizing: border-box;
 }
 
 .option:hover {
@@ -57,41 +73,60 @@
   cursor: not-allowed;
 }
 
-.nextButton {
-  margin-top: 20px;
-  background-color: green;
-  color: white;
-  border: none;
+.buttonContainer {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nextButton,
+.tryAgainButton {
+  margin-top: 40px;
   padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) ease;
+  border: none;
+}
+
+.nextButton {
+  background-color: var(--color-green);
+  color: var(--text-white);
 }
 
 .nextButton:hover {
   background-color: darkgreen;
 }
 
-.nextButton:active {
-  background-color: darkgreen;
+.tryAgainButton {
+  background-color: var(--color-red);
+  color: var(--text-white);
 }
 
-.tryAgainButton {
-  margin-top: 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+.tryAgainButton:hover {
+  background-color: darkred;
+}
+
+.dialog {
+  margin: 10% auto;
+  width: 80%;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 34px;
+  border: 0;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .correct {
-  background-color: green;
-  animation: correct 0.3s ease;
+  background-color: var(--color-green);
+  animation: correct var(--transition-duration) ease;
+}
+
+.message {
+  margin-top: 40px;
+  font-size: 2rem;
+  color: var(--text-white);
 }
 
 @keyframes correct {
@@ -105,12 +140,14 @@
     transform: scale(1);
   }
 }
+
 .correct[disabled] {
-  background-color: green;
+  background-color: var(--color-green);
   cursor: not-allowed;
 }
+
 .wrong {
-  border: 1px solid red;
+  border: 1px solid var(--color-red);
 }
 
 @media screen and (max-width: 768px) {
@@ -119,7 +156,7 @@
   }
 
   .option {
-    width: 100%;
+    max-width: 100%;
   }
 
   .nextButton {
@@ -130,10 +167,7 @@
     font-size: 3rem;
   }
 
-  .score {
-    font-size: 1.5rem;
-  }
-
+  .score,
   .question {
     font-size: 1.5rem;
   }
